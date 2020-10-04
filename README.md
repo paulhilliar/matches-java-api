@@ -69,3 +69,13 @@ If you request sorting by a field that does not exist then you will get a 400 re
 e.g. 
 curl -v 'localhost:8080/products?sort=foo'
 
+
+# Docker
+To build the docker image locally, run
+
+`./build-docker.sh`
+
+To run the docker image: 
+
+`docker container run --publish 8080:8080 papi:latest`
+
