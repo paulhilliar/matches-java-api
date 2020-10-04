@@ -19,6 +19,6 @@ FROM adoptopenjdk/openjdk8:alpine-slim
 # Copy the jar to the production image from the builder stage.
 COPY --from=builder /app/build/libs/app-*.jar /app.jar
 
-# Run the web service on container startup.
+# Run the Spring Boot service on container startup.
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar"]
 

@@ -53,8 +53,7 @@ Sample Data
 * Link to your PRIVATE git repo 
 * Or a link to your zipped up code
 
-###
-How to call the APIs
+### How to call the APIs
 
 The response type of the products API is a paginated list.  Default page size is 25.  Default sort is by title.
 
@@ -70,7 +69,7 @@ e.g.
 curl -v 'localhost:8080/products?sort=foo'
 
 
-# Docker
+### Docker
 To build the docker image locally, run
 
 `./build-docker.sh`
@@ -79,3 +78,7 @@ To run the docker image:
 
 `docker container run --publish 8080:8080 papi:latest`
 
+### Google Cloud Build/Cloud run pipeline
+There is a pipeline set up to auto build/deploy this code
+ 
+`curl https://matches-product-api-a6tmrbnexa-ew.a.run.app/products`

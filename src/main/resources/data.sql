@@ -10,4 +10,6 @@ CREATE TABLE products (
 INSERT INTO products (title, category, price) VALUES
 ('Slim Shirt', 'SHIRTS', 100),
 ('Long Skirt', 'SKIRTS', 10000),
-('Summer Dress', 'DRESSES', 90);
+('Summer Dress', 'DRESSES', 90),
+('Board Shorts', 'SHORTS', 700),
+('Smart Shorts', 'SHORTS', 12300);
