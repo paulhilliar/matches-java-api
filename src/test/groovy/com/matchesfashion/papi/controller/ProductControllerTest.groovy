@@ -1,6 +1,6 @@
 package com.matchesfashion.papi.controller
 
-import com.fasterxml.jackson.databind.ObjectMapper
+
 import com.matchesfashion.papi.domain.Product
 import com.matchesfashion.papi.repository.ProductRepository
 import org.junit.Test
@@ -16,18 +16,18 @@ import org.springframework.data.domain.Sort
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 
-import static java.lang.Math.abs
+import static com.matchesfashion.papi.DomainTestData.product
+import static com.matchesfashion.papi.TestUtils.marshal
+import static com.matchesfashion.papi.TestUtils.unmarshal
 import static org.hamcrest.Matchers.equalTo
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.ArgumentMatchers.eq
 import static org.mockito.Mockito.verify
 import static org.mockito.Mockito.when
-import static org.mockito.Mockito.any
-import static org.mockito.Mockito.eq
 import static org.springframework.data.domain.Sort.Direction.ASC
 import static org.springframework.http.MediaType.APPLICATION_JSON
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 @RunWith(SpringRunner)
 @WebMvcTest([ProductController])
@@ -35,10 +35,7 @@ class ProductControllerTest {
 
     @Autowired MockMvc mockMvc
     @MockBean ProductRepository productRepository
-    static random = new Random()
-    static final ObjectMapper objectMapper = new ObjectMapper()
     @Captor ArgumentCaptor<Pageable> pageableCaptor
-
 
     @Test
     void 'test happy path find all'() {
@@ -113,19 +110,4 @@ class ProductControllerTest {
         }
     }
 
-    static <T> T unmarshal(String json, Class<T> clazz) {
-        return objectMapper.readValue(json, clazz);
-    }
-
-    static String marshal(Object obj) {
-        return objectMapper.writeValueAsString(obj);
-    }
-
-    static Product product(String title='valid-title') {
-        return new Product(id: abs(random.nextInt()),
-                title: title,
-                category: 'valid-category',
-                price: abs(random.nextInt())
-        )
-    }
 }
