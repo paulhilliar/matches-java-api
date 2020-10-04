@@ -52,3 +52,20 @@ Sample Data
 
 * Link to your PRIVATE git repo 
 * Or a link to your zipped up code
+
+###
+How to call the APIs
+
+The response type of the products API is a paginated list.  Default page size is 25.  Default sort is by title.
+
+Return all the products:
+curl 'localhost:8080/products' 
+
+All query params are optional
+Example of all the query params in use:
+curl 'localhost:8080/products?pageSize=2&page=0&priceGreaterThan=5&sort=title' 
+
+If you request sorting by a field that does not exist then you will get a 400 response
+e.g. 
+curl -v 'localhost:8080/products?sort=foo'
+
